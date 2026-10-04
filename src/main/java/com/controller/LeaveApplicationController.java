@@ -16,45 +16,39 @@ import com.entity.LeaveApplication;
 import com.service.LeaveApplicationService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class LeaveApplicationController {
-	
+
 	@Autowired
 	LeaveApplicationService service;
-	
+
 	@PostMapping("/applyforleave")
-	public String applyforleave(@RequestBody LeaveApplication l)
-	{
+	public String applyforleave(@RequestBody LeaveApplication l) {
 		return service.applyforleave(l);
 	}
-	
+
 	@GetMapping("/allleaves")
-	public List<LeaveApplication> findallleave()
-	{
+	public List<LeaveApplication> findallleave() {
 		return service.findallleave();
 	}
-	
+
 	@DeleteMapping("/cancleleave")
-	public String cancleleave(@RequestParam int leaveid)
-	{
+	public String cancleleave(@RequestParam int leaveid) {
 		return service.cancleleave(leaveid);
 	}
-	
+
 	@PutMapping("/updateleave")
-	public String updateleave(@RequestParam int leaveid, @RequestBody LeaveApplication l)
-	{
+	public String updateleave(@RequestParam int leaveid, @RequestBody LeaveApplication l) {
 		return service.updateleaveapplication(leaveid, l);
 	}
-	
+
 	@PutMapping("/updateleavestatus")
-	public String updateleavestatus(@RequestParam int leaveid, @RequestParam String action)
-	{
+	public String updateleavestatus(@RequestParam int leaveid, @RequestParam String action) {
 		return service.updateleavestatus(leaveid, action);
 	}
-	
+
 	@GetMapping("/viewleavedetailebyemp")
-	public List<LeaveApplication> findleavebyempid(@RequestParam int empid)
-	{
+	public List<LeaveApplication> findleavebyempid(@RequestParam int empid) {
 		return service.findleavebyempid(empid);
 	}
 

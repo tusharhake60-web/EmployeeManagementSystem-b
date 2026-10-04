@@ -14,74 +14,64 @@ import com.entity.Employee;
 import com.service.EmployeeService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class EmployeeController {
-	
+
 	@Autowired
 	EmployeeService service;
-	
-	//Add employee 
+
+	// Add employee
 	@PostMapping("/addemp")
-	public String addEmployee(@RequestBody Employee e)
-	{
+	public String addEmployee(@RequestBody Employee e) {
 		return service.addemp(e);
 	}
-	
-	//Get Employee List
+
+	// Get Employee List
 	@GetMapping("/getemplist")
-	public List<Employee> getemplist()
-	{
+	public List<Employee> getemplist() {
 		return service.findemplist();
 	}
-	
-	//Get Employee By Id
+
+	// Get Employee By Id
 	@GetMapping("/getempbyid")
-	public Employee getemp(@RequestParam int empid)
-	{
+	public Employee getemp(@RequestParam int empid) {
 		return service.findempid(empid);
 	}
-	
-	//Get Employee By First Name
+
+	// Get Employee By First Name
 	@GetMapping("/getempbyfname")
-	public List<Employee> getempbyfname(@RequestParam String firstname)
-	{
+	public List<Employee> getempbyfname(@RequestParam String firstname) {
 		return service.getEmpByFirstName(firstname);
 	}
-	
-	//Get Employee by Last Name
+
+	// Get Employee by Last Name
 	@GetMapping("/getempbylname")
-	public List<Employee> getempbylname(@RequestParam String lastname)
-	{
+	public List<Employee> getempbylname(@RequestParam String lastname) {
 		return service.getEmpByLastName(lastname);
 	}
-	
-	//Get Employee By designation
+
+	// Get Employee By designation
 	@GetMapping("/getempbydesignation")
-	public List<Employee> getempbydesignatio(@RequestParam String designation)
-	{
+	public List<Employee> getempbydesignatio(@RequestParam String designation) {
 		return service.getEmpByDesignation(designation);
 	}
-	
-	//Get Employee by Department
+
+	// Get Employee by Department
 	@GetMapping("/getempbydepartment")
-	public List<Employee> getempbydepartment(@RequestParam String department)
-	{
+	public List<Employee> getempbydepartment(@RequestParam String department) {
 		return service.getEmpByDepartment(department);
 	}
-	
-	//Delete Employee
+
+	// Delete Employee
 	@DeleteMapping("/deleteemp")
-	public String deleteemp(@RequestParam int empid)
-	{
+	public String deleteemp(@RequestParam int empid) {
 		return service.deleteid(empid);
 	}
-	
-	//Update Employee 
+
+	// Update Employee
 	@PutMapping("/updateemp")
-	public String updateemp(@RequestParam int empid,@RequestBody Employee e)
-	{
+	public String updateemp(@RequestParam int empid, @RequestBody Employee e) {
 		return service.updateemp(empid, e);
 	}
-	
 
 }

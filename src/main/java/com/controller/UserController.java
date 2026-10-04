@@ -14,31 +14,25 @@ import com.entity.User;
 import com.service.UserService;
 
 @RestController
-@CrossOrigin
-public class UserController
-{
+@CrossOrigin(origins = "*")
+public class UserController {
 
 	@Autowired
 	UserService service;
-	
-	//registration user
+
+	// registration user
 	@PostMapping("/regist")
-	public String userresister(@RequestBody User user)
-	{
+	public String userresister(@RequestBody User user) {
 		return service.regidtrstion(user);
 	}
-	
-	//login
+
+	// login
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody UserDTO dto)
-	{
-		User exist=service.login(dto);
-		if(exist!=null)
-		{
+	public ResponseEntity<?> login(@RequestBody UserDTO dto) {
+		User exist = service.login(dto);
+		if (exist != null) {
 			return ResponseEntity.ok(exist);
-		}
-		else
-		{
+		} else {
 			return ResponseEntity
 					.status(HttpStatus.UNAUTHORIZED)
 					.body("Invalid Username And Password");
